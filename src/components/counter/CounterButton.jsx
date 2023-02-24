@@ -1,7 +1,7 @@
 import {PropTypes} from 'prop-types'
 import {useState} from 'react'
 
-import './CounterButton.css'
+import './Button.css'
 
 CounterButton.propTypes ={
     by: PropTypes.number
