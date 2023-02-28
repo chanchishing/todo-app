@@ -10,8 +10,6 @@ export default function TodoApp() {
     )
 }
 
-
-
 function LoginComponent() {
 
     const [username,setUsername]=useState('in28minutes');
@@ -30,36 +28,18 @@ function LoginComponent() {
 
     function handleSubmit() {
         if (username==='in28minutes' && password==='dummy') {
-            console.log('sucess');
             setShowSuccessMessage(true);
             setShowErrorMessage(false);
         } else {
-            console.log('failed');
             setShowSuccessMessage(false);
             setShowErrorMessage(true);
         }
     }
 
-    function SuccessMessageComponent() {
-        if (showSuccessMessage) {
-            return(<div className="successMessages">Authenticated Sucessfully</div>)
-        } else {
-            return (null)
-        }
-    }
-    
-    function ErrorMessageComponent() {
-        if (showErrorMessage) {
-            return(<div className="errorMessages">Authenticated Failed.  Please check your credentials.</div>)
-        } else {
-            return (null)
-        }
-    }
-
     return (
         <div className="Login">
-            <SuccessMessageComponent/>
-            <ErrorMessageComponent/>
+            {showSuccessMessage && <div className="successMessages">Authenticated Sucessfully</div>}
+            {showErrorMessage && <div className="errorMessages">Authenticated Failed.  Please check your credentials.</div>}
             <div className="LoginForm">
                 <div>
                     <label>User Name</label>
