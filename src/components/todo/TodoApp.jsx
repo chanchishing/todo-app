@@ -6,15 +6,18 @@ import { BrowserRouter, Routes, Route, useNavigate, useParams, Link } from 'reac
 export default function TodoApp() {
     return (
         <div className="TodoApp">
+            <HeaderComponent/>
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<LoginComponent/>} />
                     <Route path='/login' element={<LoginComponent/>} />
                     <Route path='/welcome/:username' element={<WelcomeComponent/>} />
                     <Route path='/todos' element={<ListTodosComponent/>} />
+                    <Route path='/logout' element={<LogoutComponent/>} />
                     <Route path='*' element={<ErrorComponent/>} />
                 </Routes>
             </BrowserRouter>
+            <FooterComponent/>
         </div>
     )
 }
@@ -89,16 +92,6 @@ function WelcomeComponent() {
     )
 }
 
-function ErrorComponent() {
-    return (
-        <div className="ErrorComponent">
-            <h1>Opps!</h1>
-            <p>The URL you want to access does not exist, please verify your url.</p>
-            <p>Please contact us at our email address enquiry@abc.com, if you have any enquiry.</p>            
-        </div>
-    )
-}
-
 function ListTodosComponent() {
 
     const today= new Date();
@@ -138,6 +131,42 @@ function ListTodosComponent() {
                 </table>
 
             </div>
+        </div>
+    )
+}
+
+function HeaderComponent() {
+    return (
+        <div className="header">
+            Header <hr/>
+        </div>
+    )
+}
+
+function FooterComponent() {
+    return (
+        <div className="footer">
+            <hr/> Footer
+        </div>
+    )
+}
+
+
+function LogoutComponent() {
+    return (
+        <div className="LogoutComponent">
+            <h1>You are logged out !</h1>
+            <p>Thank You.  Hope to see your soon.</p>
+        </div>
+    )
+}
+
+function ErrorComponent() {
+    return (
+        <div className="ErrorComponent">
+            <h1>Opps!</h1>
+            <p>The URL you want to access does not exist, please verify your url.</p>
+            <p>Please contact us at our email address enquiry@abc.com, if you have any enquiry.</p>            
         </div>
     )
 }
