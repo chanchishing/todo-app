@@ -103,10 +103,10 @@ function ListTodosComponent() {
                 {id:3,description:'Learn Machine Learning',done:false,targetDate:targetDate},
             ]
     return (
-        <div className="ListTodosComponent">
+        <div className="container">
             <h1>Things To Do!</h1>
             <div>
-                <table>
+                <table className="table">
                     <thead>
                         <tr>
                             <td>Id</td>
