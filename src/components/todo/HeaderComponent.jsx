@@ -6,6 +6,8 @@ export default function HeaderComponent() {
     
     const authContext = useContext(AuthContext);
 
+    console.log(authContext.number);
+
     return (
         <header className="border-bottom border-1 b-5 p-2">
             <div className="container">
