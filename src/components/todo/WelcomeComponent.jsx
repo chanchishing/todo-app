@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
 
-import { retrieveHelloWorldBean,retrieveHelloWorld } from './api/HelloWorldApiService.js';
+import { retrieveHelloWorldBean,retrieveHelloWorldPathVariable } from './api/HelloWorldApiService.js';
 
 export default function WelcomeComponent() {
 
@@ -11,16 +11,14 @@ export default function WelcomeComponent() {
 
     function callHelloWorldRestApi(){
         console.log("hello world");
-
-
-        retrieveHelloWorld()
-            .then((response)=>sucessfulResponse(response))
+        retrieveHelloWorldPathVariable('Ranga')
+            .then((response)=>sucessfulBeanResponse(response))
             .catch((error)=>errorResponse(error))
             .finally(()=>console.log('cleanup'));
     }
 
     function sucessfulResponse(response) {
-        console.log(response);
+        console.log(response.data);
         setMessage(response.data);
     }
 
@@ -43,6 +41,9 @@ export default function WelcomeComponent() {
         setMessage(response.data.message);
     }
 
+
+
+
     return (
         <div className="Welcome">
             <h1>Welcome {username}</h1>
@@ -50,7 +51,7 @@ export default function WelcomeComponent() {
                 Your todos - <Link to="/todos">Click Here</Link>
             </div>
             <div>
-                <button className="btn btn-success m-5" onClick={callHelloWorldRestApi}>Call Hello World</button>
+                <button className="btn btn-success m-5" onClick={callHelloWorldRestApi}>Call Hello World Path Variable</button>
             </div>
             <div>
                 <button className="btn btn-success m-5" onClick={callHelloWorldBeanRestApi}>Call Hello World Bean</button>
