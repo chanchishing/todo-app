@@ -10,4 +10,6 @@ const apiClient =axios.create (
 
 // export const retrieveHelloWorld = (()=>apiClient.get('/hello-world'));
 
-export const retrieveAllTodosForUserName = ((username)=>apiClient.get(`/users/${username}/todos`));
+export const retrieveAllTodosForUserNameApi = ((username)=>apiClient.get(`/users/${username}/todos`));
+
+export const deleteTodoApi = ((username,id)=>apiClient.delete(`/users/${username}/todos/${id}`));
