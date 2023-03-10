@@ -3,6 +3,7 @@ import { useAuth } from "./security/AuthContext";
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import {ErrorMessage, Field, Form, Formik} from "formik"
+import moment from "moment/moment";
 export default function TodoComponent() {
 
     const authContext=useAuth();
@@ -60,7 +61,7 @@ export default function TodoComponent() {
             errors.description='Enter a least 5 characters';     
         }
 
-        if (values.targetDate===null||values.targetDate===""){
+        if (values.targetDate===null||values.targetDate==="" || !moment(values.targetDate).isValid()){
             errors.targetDate='Enter a target date';   
         }
 
