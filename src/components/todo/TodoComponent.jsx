@@ -10,16 +10,16 @@ export default function TodoComponent() {
 
     const {id}=useParams();
 
-    const [description,setDescription]=useState('');
-    const [targetDate,setTargetDate]=useState('');
-    //const [todo,setTodo]=useState('');
+    // const [description,setDescription]=useState('');
+    // const [targetDate,setTargetDate]=useState('');
+    const [todo,setTodo]=useState('');
 
     function retrieveTodo(){
         retrieveTodoApi(username,id)
-            .then(response=>{setDescription(response.data.description);
-                             setTargetDate(response.data.targetDate);
-                            })
-            // .then(response=>setTodo(response.data))
+            // .then(response=>{setDescription(response.data.description);
+            //                  setTargetDate(response.data.targetDate);
+            //                 })
+            .then(response=>setTodo(response.data))
             .catch(error=>console.log(error));
     }
 
@@ -33,7 +33,7 @@ export default function TodoComponent() {
         <div className="container">
             <h1>Enter Todo Details</h1>
             <div>
-                <Formik initialValues={ { description, targetDate } } enableReinitialize={true}
+                <Formik initialValues={ {todo} } enableReinitialize={true}
                     onSubmit={onSubmit}
                 >
                 {
@@ -41,11 +41,11 @@ export default function TodoComponent() {
                         <Form>
                             <fieldset className="form-group">
                                 <label>Description</label>
-                                <Field type="text" className="form-control" name="description"/>
+                                <Field type="text" className="form-control" name="todo.description"/>
                             </fieldset>
                             <fieldset className="form-group">
                                 <label>Target Date</label>
-                                <Field type="date" className="form-control" name="targetDate"/>
+                                <Field type="date" className="form-control" name="todo.targetDate"/>
                             </fieldset>
                             <div>
                                 <button type="submit" className="btn btn-success m-5" >Save</button>
