@@ -19,7 +19,9 @@ export default function TodoComponent() {
 
     function retrieveTodo(){
 
-        if (id===-1) {
+        
+        if (id==-1) {
+            console.log("id is -1")
             return
         }
 
@@ -41,7 +43,7 @@ export default function TodoComponent() {
                     done: false
         }
 
-        if (id===-1) {
+        if (id==-1) {
             createTodoApi(username,todo)
                 .then(response=>navigate('/todos'))
                 .catch(error=>console.log(error));
@@ -68,7 +70,7 @@ export default function TodoComponent() {
         return errors;
     }
 
-    useEffect( ()=>retrieveTodo(),[id] );
+    useEffect( ()=>retrieveTodo(),[id,username] );
     //useEffect( ()=>retrieveTodo() );
 
     return (

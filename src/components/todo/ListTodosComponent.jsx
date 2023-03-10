@@ -27,7 +27,7 @@ export default function ListTodosComponent() {
             .catch(error=>console.log(error));
     }
 
-    useEffect( ()=>refreshTodos(),[] );
+    useEffect( ()=>refreshTodos(),[username] );
 
     function deleteTodo(id){
         console.log(`delete to do clicked ${id}`);
