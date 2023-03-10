@@ -1,4 +1,4 @@
-import { retrieveTodoApi,updateTodoApi } from "./api/TodoApiService"
+import { retrieveTodoApi,updateTodoApi,createTodoApi } from "./api/TodoApiService"
 import { useAuth } from "./security/AuthContext";
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
@@ -17,6 +17,11 @@ export default function TodoComponent() {
     const [targetDate,setTargetDate]=useState('');
 
     function retrieveTodo(){
+
+        if (id===-1) {
+            return
+        }
+
         retrieveTodoApi(username,id)
             .then(response=>{setDescription(response.data.description);
                              setTargetDate(response.data.targetDate);
@@ -27,15 +32,23 @@ export default function TodoComponent() {
 
     function onSubmit(values) {
         console.log(values);
+        
         const todo={id:id,
                     username:username,
                     description: values.description,
                     targetDate:values.targetDate,
                     done: false
         }
-        updateTodoApi(username,id,todo)
-            .then(response=>navigate('/todos'))
-            .catch(error=>console.log(error));
+
+        if (id===-1) {
+            createTodoApi(username,todo)
+                .then(response=>navigate('/todos'))
+                .catch(error=>console.log(error));
+        } else {
+            updateTodoApi(username,id,todo)
+                .then(response=>navigate('/todos'))
+                .catch(error=>console.log(error));
+        }
     }
 
     function validate(values) {

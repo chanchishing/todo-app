@@ -11,8 +11,8 @@ export default function ListTodosComponent() {
 
     const username=authContext.username;
 
-    const today= new Date();
-    const targetDate=new Date(today.getFullYear()+12,today.getMonth(),today.getDay());
+    //const today= new Date();
+    // const targetDate=new Date(today.getFullYear()+12,today.getMonth(),today.getDay());
 
     const [todos,setTodos]=useState([]);
 
@@ -47,6 +47,10 @@ export default function ListTodosComponent() {
         console.log(`update to do clicked ${id}`);
         navigate(`/todo/${id}`);
 
+    }
+
+    function addNewTodo(){
+        navigate(`/todo/-1`);
     }
 
 
@@ -91,7 +95,7 @@ export default function ListTodosComponent() {
                         }
                     </tbody>
                 </table>
-
+                <div className="btn btn-success m-5" onClick={addNewTodo}>Add New Todo</div>
             </div>
         </div>
     )
