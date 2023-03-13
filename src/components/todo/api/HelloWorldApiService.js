@@ -6,17 +6,24 @@ const apiClient =axios.create (
                     }
                 )       
 
-export const retrieveHelloWorldBean = (()=>apiClient.get('/hello-world-bean'));
+export const retrieveHelloWorldBean =
+    ((token)=>apiClient.get('/hello-world-bean',
+        {
+            headers :{
+                Authorization: token
+            }
+        }
+    ));
 
 export const retrieveHelloWorld = (()=>apiClient.get('/hello-world'));
 
 export const retrieveHelloWorldPathVariable = 
-    ((username)=>apiClient.get(`/hello-world/path-variable/${username}`,
-        // {
-        //     headers :{
-        //         Authorization:
-        //     }
-        // }
+    ((username,token)=>apiClient.get(`/hello-world/path-variable/${username}`,
+        {
+            headers :{
+                Authorization: token
+            }
+        }
     ));
 
 
