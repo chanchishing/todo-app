@@ -16,6 +16,7 @@ export default function TodoComponent() {
     //const [todo,setTodo]=useState('');
     const [description,setDescription]=useState('');
     const [targetDate,setTargetDate]=useState('');
+    const [version,setVersion]=useState('');
 
     function retrieveTodo(){
 
@@ -26,8 +27,10 @@ export default function TodoComponent() {
         }
 
         retrieveTodoApi(username,id)
-            .then(response=>{setDescription(response.data.description);
+            .then(response=>{
+                             setDescription(response.data.description);
                              setTargetDate(response.data.targetDate);
+                             setVersion(response.data.version);
                             })
             // .then(response=>setTodo(response.data))
             .catch(error=>console.log(error));
@@ -40,7 +43,8 @@ export default function TodoComponent() {
                     username:username,
                     description: values.description,
                     targetDate:values.targetDate,
-                    done: false
+                    done: false,
+                    version:version
         }
 
         if (id==-1) {
