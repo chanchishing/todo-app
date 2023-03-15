@@ -6,7 +6,7 @@ import HeaderComponent from './HeaderComponent';
 // import FooterComponent from './FooterComponent';
 import WelcomeComponent from './WelcomeComponent';
 import ListTodosComponent from './ListTodosComponent';
-import TodoComponent from './TodoComponent';
+import TodoComponent from './TodoComponent.v2';
 import ErrorComponent from './ErrorComponent';
 import AuthProvider, { useAuth } from './security/AuthContext';
 
