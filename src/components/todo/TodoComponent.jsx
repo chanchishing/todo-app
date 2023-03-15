@@ -74,7 +74,7 @@ export default function TodoComponent() {
         return errors;
     }
 
-    useEffect( ()=>retrieveTodo(),[id,username] );
+    useEffect( ()=>retrieveTodo(),[id,username,version] );
     //useEffect( ()=>retrieveTodo() );
 
     return (
